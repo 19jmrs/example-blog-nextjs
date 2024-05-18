@@ -5,7 +5,9 @@ const BlogLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full flex">
       <NavigationHeader />
-      <main className="h-full pt-40">{children}</main>
+      <div className="container mx-auto grid items-start gap-10 py-8">
+        {children}
+      </div>
     </div>
   );
 };

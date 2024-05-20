@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 export const Footer = () => {
   const pathName = usePathname();
   return (
-    <footer>
+    <footer className="bottom-0 absolute">
       <div className="mb-6 mt-14 flex flex-col item-center p-6">
         <div
           className="md:ml-auto w-full justify-between  flex flex-1  items-center space-x-1

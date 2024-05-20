@@ -9,7 +9,7 @@ export default function Blog() {
 
   return (
     <>
-      <div className="container max-w-4xl px-6 lg:py-10">
+      <div className="container max-w-4xl px-6 lg:py-10 space-y-6 md:mt-24 mt-24">
         <div
           className="flex flex-col items-start gap-4 md:flex-row md:justify-between
     md:gap-8"
@@ -45,7 +45,6 @@ export default function Blog() {
           <p>Nothing to see here yet!</p>
         )}
       </div>
-      <Footer />
     </>
   );
 }

@@ -2,10 +2,26 @@ import { posts } from "#site/content";
 import { Footer } from "@/components/footer";
 import { PostItem } from "@/components/post-item";
 import { sortPosts } from "@/lib/utils";
+import { QueryPagination } from "@/components/query-pagination";
 
-export default function Blog() {
+const POSTS_PER_PAGE = 5;
+
+interface BlogPageProps {
+  searchParams: {
+    page?: string;
+  };
+}
+
+export default function Blog({ searchParams }: BlogPageProps) {
+  const currentPage = Number(searchParams?.page) || 1;
+
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
-  const displayPost = sortedPosts;
+  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+
+  const displayPost = sortedPosts.slice(
+    POSTS_PER_PAGE * (currentPage - 1),
+    POSTS_PER_PAGE * currentPage
+  );
 
   return (
     <>
@@ -44,6 +60,11 @@ export default function Blog() {
         ) : (
           <p>Nothing to see here yet!</p>
         )}
+
+        <QueryPagination
+          totalPages={totalPages}
+          className="mt-4 justify-center"
+        />
       </div>
     </>
   );
